@@ -10,11 +10,14 @@
 </template>
 
 <script setup>
+// get data from index
 import { defineProps } from 'vue';
 
 const props = defineProps({
     tableData: Array,
     headerColumn: Array
 });
+// end get data from index
+
 
 </script>
