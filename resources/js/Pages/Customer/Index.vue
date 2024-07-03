@@ -1,16 +1,13 @@
 <template>
-    <Table></Table>
+<Table :tableData="tableData" :headerColumn="headerColumn"></Table>
 </template>
 
 <script setup>
-import Table from '../../Components/Table.vue'
+import { usePage } from '@inertiajs/vue3';
+import Table from '@/Components/Table.vue';
 
-const dataTable = defineProps({
-    customers:Array,
-    })
+const tableData = usePage().props.customers;
+const headerColumn = Object.keys(tableData[0]);
+
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

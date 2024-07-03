@@ -29,4 +29,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
 });
 
+
 require __DIR__.'/auth.php';

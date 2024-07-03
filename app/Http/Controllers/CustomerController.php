@@ -15,17 +15,16 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->search;
-        $customers = customer::where('customer_id', 'like', '%' . $search . '%')
-            ->orWhere('nama', 'like', '%' . $search . '%')
-            ->orderBy('nama', 'asc')
-            ->get();
-            
-            return Inertia::render('Customer/Index', [
-                'customers' => $customers,
-                'search' => $search,
-            ]);
+        $search = $request->query('search');
+        $customers = Customer::where('nama', 'like', "%$search%")
+                                    ->orwhere('customer_id', 'like', "%$search%")
+                                    ->get();
+        return inertia::render('Customer/Index', [
+            'customers' => $customers->toArray(),
+            'search' => $search,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

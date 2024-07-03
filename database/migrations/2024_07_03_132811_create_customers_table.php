@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('negara', 50)->nullable();
             $table->string('kontak', 50)->nullable();
             $table->string('telephone', 50)->nullable();
-            $table->bolean('ischecked')->default(false);
+            $table->boolean('ischecked')->default(0);
             $table->timestamps();
         });
     }
