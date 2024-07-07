@@ -3,6 +3,9 @@
         <table class="w-full text-nowrap text-left uppercase rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th>
+                        Select Data
+                    </th>
                     <th v-for="column in headerColumn" 
                     :key="column" 
                     v-show="column !== 'id' && column !== 'created_at' && column !== 'updated_at'" 
@@ -15,7 +18,7 @@
                 <tr v-for="data in tableData"
                  :key="data.id" 
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <Checkbox name="selectData" :checked="checked" v-model="data.ischecked"/>
+                    <Checkbox @change="update()" name="selectData" v-model:checked="data.ischecked"/>
                     <td v-for="column in headerColumn"
                     :key="column"
                     v-show="column !== 'id' && column !== 'created_at' && column !== 'updated_at'" 
@@ -26,11 +29,12 @@
             </tbody>
         </table>
     </div>
+    
 </template>
 
 <script setup>
 // get data from index
-import { defineProps,ref } from 'vue';
+import { defineProps,ref, watch } from 'vue';
 
 const props = defineProps({
     tableData: Array,
@@ -38,8 +42,18 @@ const props = defineProps({
 });
 // end get data from index
 
-// checkbox component
+// select data with checkbox
 import Checkbox from './Checkbox.vue';
-const checked = ref(false)
+
+const filterData = ref([]);
+const filteredID = ref([]);
+const update = () => {
+    filterData.value = props.tableData.filter(data => data.ischecked);
+    filteredID.value = filterData.value.map(data => data.id);
+    console.log(filteredID.value);
+}
+
+// end of select data with checkbox
+
 
 </script>

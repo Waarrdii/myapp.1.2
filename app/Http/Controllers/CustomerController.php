@@ -63,7 +63,9 @@ class CustomerController extends Controller
      */
     public function update(UpdatecustomerRequest $request, customer $customer)
     {
-        //
+        $request -> validate([
+            'customer_id' => 'required',
+        ]);
     }
 
     /**
