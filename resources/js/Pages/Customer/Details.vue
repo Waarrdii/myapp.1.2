@@ -1,7 +1,5 @@
 <template>
-    <div>
-        form customers
-    </div>
+
 </template>
 
 <script setup>

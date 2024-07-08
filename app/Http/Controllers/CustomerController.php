@@ -17,10 +17,10 @@ class CustomerController extends Controller
     {
         $search = $request->query('search');
         $customers = Customer::where('nama', 'like', "%$search%")
-                                    ->orwhere('customer_id', 'like', "%$search%")
-                                    ->get();
+            ->orwhere('customer_id', 'like', "%$search%")
+            ->get();
         return inertia::render('Customer/Index', [
-            'customers' => $customers->toArray(),
+            'customers' => $customers,
             'search' => $search,
         ]);
     }
@@ -39,8 +39,6 @@ class CustomerController extends Controller
      */
     public function store(StorecustomerRequest $request)
     {
-     
-        
     }
 
     /**
@@ -48,7 +46,10 @@ class CustomerController extends Controller
      */
     public function show(customer $customer)
     {
-        //
+        $customers = Customer::where('id', $customer->id)->get();
+        return inertia::render('Customer/Details', [
+            'customers' => $customers,
+        ]);
     }
 
     /**
@@ -56,17 +57,18 @@ class CustomerController extends Controller
      */
     public function edit(customer $customer)
     {
-        
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update customer data.
+     *
+     * @param UpdateCustomerRequest $request
+     * @param Customer $customer
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdatecustomerRequest $request, customer $customer)
     {
-        $request -> validate([
-            'customer_id' => 'required',
-        ]);
+
     }
 
     /**

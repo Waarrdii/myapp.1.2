@@ -25,9 +25,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
-    Route::get('/customers/add', [CustomerController::class, 'create'])->name('customer.create');
+Route::prefix('customers')->middleware('auth')->group(function () {
+    Route::get('/', [CustomerController::class, 'index'])->name('customers');
+    Route::get('/add', [CustomerController::class, 'create'])->name('customer.create');
+    Route::post('/', [CustomerController::class, 'store'])->name('customer.store');
+    Route::get('/{customer}', [CustomerController::class, 'show'])->name('customer.show');
+    Route::patch('/{customer}', [CustomerController::class, 'update'])->name('customer.update');
 });
 
 
