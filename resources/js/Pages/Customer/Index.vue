@@ -1,5 +1,6 @@
 <template>
 <Table :tableData="tableData" :headerColumn="headerColumn"></Table>
+<button><a :href="route('customer.create')">Create Customer</a></button>
 </template>
 
 <script setup>

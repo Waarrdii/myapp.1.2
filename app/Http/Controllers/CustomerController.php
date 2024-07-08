@@ -31,7 +31,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Customer/Details');
     }
 
     /**
@@ -39,7 +39,8 @@ class CustomerController extends Controller
      */
     public function store(StorecustomerRequest $request)
     {
-        //
+     
+        
     }
 
     /**
@@ -55,7 +56,7 @@ class CustomerController extends Controller
      */
     public function edit(customer $customer)
     {
-        //
+        
     }
 
     /**
