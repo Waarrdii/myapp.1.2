@@ -30,8 +30,10 @@ class CustomerController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return inertia('Customer/Create');
+    {   
+        return inertia('Customer/Create', [
+            'customers' => Customer::all(),
+        ]);
     }
 
     /**
@@ -39,6 +41,7 @@ class CustomerController extends Controller
      */
     public function store(StorecustomerRequest $request)
     {
+
     }
 
     /**
