@@ -31,7 +31,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return inertia('Customer/Details');
+        return inertia('Customer/Create');
     }
 
     /**
