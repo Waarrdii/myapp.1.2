@@ -1,14 +1,18 @@
 <template>
-    create data customer akan disini
-   <Form :labelName="labelName"></Form>
+    <Head title="Add User" />
+
+    <AuthenticatedLayout>
+        <div class="mx-auto dark:text-white">
+            add user
+        </div>
+    </AuthenticatedLayout>
+
 </template>
 
 <script setup>
-import Form from '@/Components/Form.vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
-const dataForm = usePage().props.customers;
-const labelName = Object.keys(dataForm[0]);
 </script>
 
 <style lang="scss" scoped>

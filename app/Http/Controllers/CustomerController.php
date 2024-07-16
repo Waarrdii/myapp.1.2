@@ -31,9 +31,7 @@ class CustomerController extends Controller
      */
     public function create()
     {   
-        return inertia('Customer/Create', [
-            'customers' => Customer::all(),
-        ]);
+        return inertia('Customer/Create');
     }
 
     /**
@@ -41,7 +39,23 @@ class CustomerController extends Controller
      */
     public function store(StorecustomerRequest $request)
     {
-
+        $request->validate([
+            'customer_id' => ['required', 'string', 'max:255', 'unique:customers'],
+            'nama' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:10'],
+            'jenjang' => ['required', 'string', 'max:255'],
+            'tingkatan' => ['required', 'string', 'max:255'],
+            'alamat' => ['required', 'string', 'max:255'],
+            'kota' => ['required', 'string', 'max:255'],
+            'provinsi' => ['required', 'string', 'max:255'],
+            'negara' => ['required', 'string', 'max:255'],
+            'telp' => ['required', 'string', 'max:255'],
+            'kontak' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
+            'kode_pos' => ['required', 'string', 'max:255'],
+        ]);
+        customer::created($request->all());
+        return redirect(route('customer.index'));
     }
 
     /**
