@@ -2,12 +2,16 @@
     <Head title="Add User" />
 
     <AuthenticatedLayout>
-        <form action="" class="max-w-md mx-auto mt-3 bg-white py-4 px-2">
+        <form action="" class="max-w-md mx-auto mt-3 py-4 px-2">
             <div class="relative z-0 w-full mb-5 group">
-            <InputForm type="email" name="floating_email" id="floating_email" />
-            <LabelForm inputName="floating_email" TextLabel="Email"/>
+                <input type="email" name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required>
+                <label for="email" class="absolute -translate-y-6 scale-75 top-3 -z-10 origin-[0] text-sm text-gray-500 dark:text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 peer-focus:dark:text-blue-500">Email</label>
             </div>
             
+            <div class="relative z-0 w-full mb-5 group">
+              <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+              <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+            </div>
         </form>
     </AuthenticatedLayout>
 
@@ -16,8 +20,6 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import InputForm from '@/Components/InputForm.vue';
-import LabelForm from '@/Components/LabelForm.vue';
 
 </script>
 
