@@ -1,5 +1,5 @@
 <template>
-    <div class="relative z-0 w-full mb-5 group">
+    <div class="relative z-0 mb-5 group">
         <input 
         :type="type" 
         :name="name" 
