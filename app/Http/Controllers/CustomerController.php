@@ -7,9 +7,11 @@ use App\Http\Requests\UpdatecustomerRequest;
 use App\Models\customer;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CustomerController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -37,8 +39,10 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(StorecustomerRequest $request)
     {
+        $this->authorize('create', Customer::class);
         $request->validate([
             'customer_id' => ['required', 'string', 'max:255', 'unique:customers'],
             'nama' => ['required', 'string', 'max:255'],
