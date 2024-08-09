@@ -5,24 +5,15 @@
     <AuthenticatedLayout>
         <form @submit.prevent="submit" class="max-w-md mx-auto mt-3 py-4 px-2">
             <div class="grid grid-cols-6 gap-3">
-                <InputForm type="text" name="customerId" id="customerId" labelText="Customer ID" class="col-span-2" v-model="data.customerId" />
-                <InputForm type="text" name="nama" id="nama" labelText="Nama" class="col-span-4" v-model="data.nama" />
-                <InputForm type="text" name="Alamat" id="Alamat" labelText="Alamat" class="col-span-6" v-model="data.Alamat" />
-                <InputForm type="text" name="Kota" id="Kota" labelText="Kota" class="col-span-3" v-model="data.Kota" />
-                <InputForm type="text" name="Negara" id="Negara" labelText="Negara" class="col-span-2" v-model="data.Negara" />
-                <InputForm type="text" name="KodePos" id="KodePos" labelText="Kode Pos" v-model="data.KodePos" />
-                <InputForm type="text" name="Kontak" id="Kontak" labelText="Kontak" class="col-span-3" v-model="data.Kontak" />
-                <InputForm type="text" name="Telephone" id="Telephone" labelText="Telephone" class="col-span-3" v-model="data.Telephone" />
-                <InputForm type="email" name="email" id="email" labelText="Email" class="col-span-3" v-model="data.email" />
-                <InputForm type="text" name="Type" id="Type" labelText="Type" class="col-span-3" v-model="data.Type" />
-                <InputForm type="text" name="Jenjang" id="Jenjang" labelText="Jenjang" class="col-span-2" v-model="data.Jenjang" />
-                <InputForm type="text" name="Tingkatan" id="Tingkatan" labelText="Tingkatan" class="col-span-2" v-model="data.Tingkatan" />
-                <InputForm type="text" name="Kelas" id="Kelas" labelText="Kelas" class="col-span-2" v-model="data.Kelas" />
-                <InputForm type="number" name="Saldo" id="Saldo" labelText="Saldo" class="col-span-3" v-model="data.Saldo" />
+                <div class="relative z-0 mb-5 group col-span-2">
+                    <input type="text" name="email" id="email" class="input-form peer" v-model="data.customerId"
+                        placeholder=" " required>
+                    <label for="email" class="label-form">Customer ID</label>
+                </div>
             </div>
 
-            <button type="submit"
-                class="mt-5 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save</button>
+            <button type="submit" @submit.prevent="submit"
+                class="submit-button">Save</button>
 
         </form>
 
@@ -63,4 +54,15 @@ const submit = () => {
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.input-form {
+    @apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600
+}
+
+.label-form {
+    @apply absolute -translate-y-8 scale-75 top-3 -z-10 origin-[0] text-sm text-gray-500 dark:text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-8 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+}
+.submit-button{
+    @apply mt-5 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800
+}
+</style>
